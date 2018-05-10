@@ -3,16 +3,17 @@
 
     <item
         android:id="@+id/action_item1"
-        android:icon="@drawable/ic_home_black"
+        android:icon="@drawable/ic_home"
         android:title="Home"/>
 
     <item
         android:id="@+id/action_item2"
-        android:icon="@drawable/ic_event_black"
+        android:icon="@drawable/ic_event"
         android:title="Yearly events"/>
 
     <item
         android:id="@+id/action_item3"
-        android:title="@string/tab_text_3"/>
+        android:icon="@drawable/ic_favorite"
+        android:title="Favorites"/>
 
 </menu>
