@@ -1,10 +1,24 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="nightbase.nightbase.MainActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:id="@+id/action_item1"
+        android:icon="@drawable/ic_home"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/action_item2"
+        android:icon="@drawable/ic_event"
+        android:title="Yearly events"/>
+
+    <item
+        android:id="@+id/action_item3"
+        android:icon="@drawable/ic_favorite"
+        android:title="Favorites"/>
+
+    <item
+        android:id="@+id/action_item4"
+        android:icon="@drawable/ic_insert_chart"
+        android:title="Statistieken"/>
+
 </menu>
