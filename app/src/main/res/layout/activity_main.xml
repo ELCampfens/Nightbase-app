@@ -12,14 +12,8 @@
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-<<<<<<< HEAD
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
-
-    </android.support.v4.view.ViewPager>
-=======
         android:layout_above="@+id/navigation"
         android:animateLayoutChanges="true">
->>>>>>> 76b6c41c29175b5ad2b36230763e3d79352d2b08
 
     </FrameLayout>
 

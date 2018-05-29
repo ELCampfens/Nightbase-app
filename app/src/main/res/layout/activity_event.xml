@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EventActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:textSize="30dp"
+        android:text="Event title" />
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="222dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        tools:context=".EventActivity" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="218dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="64dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eleifend massa arcu, quis lacinia erat malesuada id. Maecenas quis diam in libero consectetur scelerisque in vel nulla. Nulla vel pharetra turpis. Nulla facilisi. Suspendisse vulputate libero ipsum. Curabitur tempus eleifend odio, id aliquam mauris. Mauris semper velit non odio scelerisque sagittis in in libero. Phasellus dignissim quam id felis euismod porta. Ut hendrerit ac urna eu eleifend. Donec vestibulum mi in molestie hendrerit. Vivamus scelerisque, lectus id auctor rutrum, mauris elit eleifend sapien, sed luctus leo nibh ac est." />
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="40dp"
+        android:layout_height="38dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/textView"
+        android:layout_marginTop="-3dp"
+        android:background="@drawable/ic_arrow_back_white_24dp" />
+
+
+</RelativeLayout>
