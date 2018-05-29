@@ -1,4 +1,4 @@
-package nightbase.nightbase;
+package nightbase.nightbase.nightbase.model;
 
 public class Movie {
     private String title, genre, year;

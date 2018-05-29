@@ -8,11 +8,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import nightbase.nightbase.Movie;
+import nightbase.nightbase.nightbase.model.Event;
+import nightbase.nightbase.nightbase.model.Movie;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHolder> {
 
-    private List<Movie> moviesList;
+    private List<Event> EventList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, year, genre;
@@ -26,8 +27,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
     }
 
 
-    public MoviesAdapter(List<Movie> moviesList) {
-        this.moviesList = moviesList;
+    public MoviesAdapter(List<Event> eventList) {
+        this.EventList = eventList;
     }
 
     @Override
@@ -40,14 +41,14 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Movie movie = moviesList.get(position);
-        holder.title.setText(movie.getTitle());
-        holder.genre.setText(movie.getGenre());
-        holder.year.setText(movie.getYear());
+        Event event = EventList.get(position);
+        holder.title.setText(event.getName());
+        holder.genre.setText(event.getDescription());
+        holder.year.setText(event.getDate());
     }
 
     @Override
     public int getItemCount() {
-        return moviesList.size();
+        return EventList.size();
     }
 }
