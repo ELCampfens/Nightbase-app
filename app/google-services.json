@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "257591888738",
+    "firebase_url": "https://nightbase-e42b0.firebaseio.com",
+    "project_id": "nightbase-e42b0",
+    "storage_bucket": "nightbase-e42b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257591888738:android:6836cef0c3238bf6",
+        "android_client_info": {
+          "package_name": "nightbase.nightbase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "257591888738-dh2sn81mpeee5dtsvckqk594hoqond6t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nightbase.nightbase",
+            "certificate_hash": "b958d4aed6991c50d02ea6b06ed88199bbc27952"
+          }
+        },
+        {
+          "client_id": "257591888738-tgi2jeg6bco4oe4ruk4bmruh3anobhue.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "257591888738-tgi2jeg6bco4oe4ruk4bmruh3anobhue.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkK0-WGJAoEyu0qrg7v1V_-iO-kL5n_Rk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "257591888738-tgi2jeg6bco4oe4ruk4bmruh3anobhue.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
