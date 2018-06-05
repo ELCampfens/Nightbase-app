@@ -34,6 +34,9 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        onWindowFocusChanged(true);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.

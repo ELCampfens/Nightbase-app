@@ -9,11 +9,18 @@
     </style>
 
     <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">true</item>
-        <item name="windowNoTitle">false</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="Theme.AppCompat" />
+    <style name="noTitleBarAndAnimation" parent="android:Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
+    <!--<style name="AppTheme.AppBarOverlay" parent="Theme.AppCompat" />-->
 
     <style name="AppTheme.PopupOverlay" parent="Theme.AppCompat" />
 
