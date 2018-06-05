@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class Event implements Serializable {
 
     private int id;
-    private String name, description, url, date, image;
+    private String name, description, link, date, image;
     private double latitude, longitude;
 
     // Empty constructor
@@ -17,9 +17,10 @@ public class Event implements Serializable {
     // Constructor for the list on the home page.
     public Event(String name, String description,
                  String date, double latitude, double longitude,
-                 String url) {
+                 String link, int id) {
 
-        this.url = url;
+        this.id = id;
+        this.link = link;
         this.latitude = latitude;
         this.longitude = longitude;
         this.name = name;
@@ -27,11 +28,15 @@ public class Event implements Serializable {
         this.date = date;
     }
 
+    public String toString() {
+        return "id : " + this.id + "\nUrl : " + this.link + "\nLat : " + this.latitude + "\nLong : " + this.longitude + "\nName : " + this.name + "\nDesc : " + this.description + "\nDate : " + this.date;
+    }
+
     public double getLatitude() { return this.latitude; }
 
     public double getLongitude() { return this.longitude; }
 
-    public String getUrl() { return this.url; }
+    public String getLink() { return this.link; }
 
     public String getName() {
         return this.name;
