@@ -25,16 +25,19 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import nightbase.nightbase.Database.MyDBHandler;
 import nightbase.nightbase.nightbase.model.Event;
 
 public class EventActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private Event event;
+    private boolean like_toggle = false;
     private static final String TAG = EventActivity.class.getSimpleName();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("events");
 
+    MyDBHandler DBHandler = MyDBHandler.getInstance(this);
 
 
     @Override
@@ -74,6 +77,31 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
                 startActivity(intent);
             }
         });
+
+        // Favorite button, toggle
+        final ImageButton favorite_btn = (ImageButton) findViewById(R.id.favorite_event);
+
+        favorite_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(!like_toggle) {
+                    like_toggle = true;
+                    System.out.println("IM TRUE NOW");
+                    favorite_btn.setImageResource(R.drawable.ic_favorite_true_48dp);
+                    DBHandler.addEvent(event);
+                } else if(like_toggle) {
+                    like_toggle = false;
+                    System.out.println("IM FALSE NOW");
+                    favorite_btn.setImageResource(R.drawable.ic_favorite_false_48dp);
+                    //swap image
+                    // remove event
+                }
+
+            }
+        });
+
+
     }
 
 

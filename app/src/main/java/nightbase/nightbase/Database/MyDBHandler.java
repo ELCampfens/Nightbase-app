@@ -45,7 +45,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_EVENT_TABLE = "CREATE TABLE " + TABLE_NAME + "("
-                + EVENT_ID + " INTEGER PRIMARY KEY,"
+                + EVENT_ID + " INTEGER,"
                 + EVENT_NAME + " TEXT,"
                 + EVENT_DESC + " TEXT,"
                 + EVENT_LAT + " REAL,"
@@ -81,6 +81,22 @@ public class MyDBHandler extends SQLiteOpenHelper {
             System.out.println("added the event to the DB!");
 
         } catch(Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+    public void removeEvent(Event event) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        db.beginTransaction();
+
+        try {
+
+            db.delete(TABLE_NAME, EVENT_ID + "=" + event.getID(), null);
+
+        }catch (Exception e) {
             e.printStackTrace();
         } finally {
             db.endTransaction();
