@@ -3,6 +3,7 @@ package nightbase.nightbase;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -47,13 +48,12 @@ public class ItemOneFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_item_one, container, false);
-
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
         mAdapter = new EventAdapter(EventList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
-//        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(this.getActivity(), LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(mAdapter);
 
         // row click listener
@@ -61,9 +61,7 @@ public class ItemOneFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 Intent intent = new Intent(getActivity(), EventActivity.class);
-
-//                intent.putExtra("id", EventList.get(position).getID());
-
+                intent.putExtra("event", EventList.get(position));
                 startActivity(intent);
             }
 
@@ -74,7 +72,6 @@ public class ItemOneFragment extends Fragment {
         }));
 
         prepareEventData();
-
 
         return view;
     }
@@ -92,6 +89,8 @@ public class ItemOneFragment extends Fragment {
                     Event event = ds.getValue(Event.class);
                     EventList.add(event);
                 }
+
+                mAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -100,7 +99,5 @@ public class ItemOneFragment extends Fragment {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
-
-        mAdapter.notifyDataSetChanged();
     }
 }

@@ -1,15 +1,13 @@
 package nightbase.nightbase.nightbase.model;
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class Event {
+import java.io.Serializable;
+
+public class Event implements Serializable {
 
     private int id;
     private String name, description, url, date, image;
-
-    List<Ticket> tickets = new ArrayList<Ticket>();
-//    List<String> tags = new ArrayList<String>();
+    private double latitude, longitude;
 
     // Empty constructor
     public Event() {
@@ -18,30 +16,22 @@ public class Event {
 
     // Constructor for the list on the home page.
     public Event(String name, String description,
-                 String date) {
+                 String date, double latitude, double longitude,
+                 String url) {
 
-        this.name = name;
-        this.description = description;
-        this.date = date;
-//        this.tags = tags;
-    }
-
-    // Constructor for all the info if possible.
-    public Event(String name, String description,
-                 String url, String date,
-                 String image,
-                 ArrayList<Ticket> tickets) {
-
-        this.name = name;
-        this.description = description;
         this.url = url;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.name = name;
+        this.description = description;
         this.date = date;
-
-        this.image = image;
-        this.tickets = tickets;
-//        this.tags = tags;
-
     }
+
+    public double getLatitude() { return this.latitude; }
+
+    public double getLongitude() { return this.longitude; }
+
+    public String getUrl() { return this.url; }
 
     public String getName() {
         return this.name;
@@ -56,4 +46,5 @@ public class Event {
     }
 
     public int getID() { return this.id; }
+
 }

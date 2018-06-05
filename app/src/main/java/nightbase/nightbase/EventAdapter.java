@@ -46,6 +46,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.date.setText(event.getDate());
     }
 
+    public Event getEvent(int pos) {
+        return EventList.get(pos);
+    }
+
     @Override
     public int getItemCount() {
         return EventList.size();

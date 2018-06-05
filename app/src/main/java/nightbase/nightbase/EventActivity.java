@@ -29,6 +29,7 @@ import nightbase.nightbase.nightbase.model.Event;
 public class EventActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private Event event;
     private static final String TAG = EventActivity.class.getSimpleName();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("events");
@@ -43,12 +44,20 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
 
-        // Title
-        String name = getIntent().getStringExtra("name");
+        // Get the entire event from the intent.
+        this.event = (Event) getIntent().getSerializableExtra("event");
 
+        //Title
         TextView titleField = (TextView) findViewById(R.id.eventTitle);
+        titleField.setText(event.getName());
 
-        titleField.setText(name);
+        //Description
+        TextView descField = (TextView) findViewById(R.id.desc);
+        descField.setText(event.getDescription());
+
+        //date
+        TextView dateField = (TextView) findViewById(R.id.date);
+        dateField.setText(event.getDate());
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -95,7 +104,7 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
         }
 
         // Add a marker in Hogeschool and move the camera
-        LatLng hogeschool = new LatLng(52.167439, 4.471286);
+        LatLng hogeschool = new LatLng(this.event.getLatitude(), this.event.getLongitude());
         mMap.addMarker(new MarkerOptions().position(hogeschool).title("Marker in Hogeschool"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(hogeschool,   15.5f));
     }
