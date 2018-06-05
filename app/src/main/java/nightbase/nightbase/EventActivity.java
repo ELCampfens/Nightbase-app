@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -21,6 +22,8 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     private static final String TAG = EventActivity.class.getSimpleName();
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -28,10 +31,20 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
+
+        // Title
+        String name = getIntent().getStringExtra("name");
+
+        TextView titleField = (TextView) findViewById(R.id.eventTitle);
+
+        titleField.setText(name);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        // Previous button
         Button b = (Button) findViewById(R.id.back_button);
         b.setOnClickListener(new View.OnClickListener() {
             @Override

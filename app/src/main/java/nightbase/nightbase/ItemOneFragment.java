@@ -10,10 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import nightbase.nightbase.nightbase.model.Event;
-import nightbase.nightbase.nightbase.model.Movie;
 import nightbase.nightbase.nightbase.model.Ticket;
 
 
@@ -21,7 +19,7 @@ public class ItemOneFragment extends Fragment {
 
     private ArrayList<Event> EventList = new ArrayList<Event>();
     private RecyclerView recyclerView;
-    private MoviesAdapter mAdapter;
+    private EventAdapter mAdapter;
 
     public static ItemOneFragment newInstance() {
         ItemOneFragment fragment = new ItemOneFragment();
@@ -41,7 +39,7 @@ public class ItemOneFragment extends Fragment {
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
-        mAdapter = new MoviesAdapter(EventList);
+        mAdapter = new EventAdapter(EventList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
 //        recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -52,6 +50,9 @@ public class ItemOneFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 Intent intent = new Intent(getActivity(), EventActivity.class);
+
+//                intent.putExtra("id", EventList.get(position).getID());
+
                 startActivity(intent);
             }
 

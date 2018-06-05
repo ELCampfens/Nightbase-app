@@ -13,24 +13,35 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="match_parent"
+        android:layout_width="352dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:textColor="@color/title"
-        android:textSize="16dp"
+        android:layout_marginEnd="-290dp"
+        android:layout_toStartOf="@+id/year"
+        android:textColor="@color/gold"
+        android:gravity="center"
+        android:textSize="22dp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/genre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/title" />
+        android:layout_below="@+id/year"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:ellipsize="end"
+        android:textSize="12dp" />
 
     <TextView
         android:id="@+id/year"
-        android:layout_width="wrap_content"
+        android:layout_width="229dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:textColor="@color/year" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:textColor="@color/colorAccent"
+        android:gravity="center"
+        android:textSize="12dp" />
 
 </RelativeLayout>

@@ -54,4 +54,6 @@ public class Event {
     public String getDate() {
         return this.date;
     }
+
+    public int getID() { return this.id; }
 }
