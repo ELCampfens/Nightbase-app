@@ -51,8 +51,6 @@ public class ItemOneFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_item_one, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
-        final MyDBHandler databaseHelper = MyDBHandler.getInstance(this.getContext());
-
         mAdapter = new EventAdapter(EventList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -63,9 +61,6 @@ public class ItemOneFragment extends Fragment {
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity().getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-
-                databaseHelper.addEvent(EventList.get(position));
-
                 Intent intent = new Intent(getActivity(), EventActivity.class);
                 intent.putExtra("event", EventList.get(position));
                 startActivity(intent);

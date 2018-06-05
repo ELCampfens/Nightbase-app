@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -65,7 +66,7 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
 
         // Previous button
-        Button b = (Button) findViewById(R.id.back_button);
+        ImageButton b = (ImageButton) findViewById(R.id.back_button);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
