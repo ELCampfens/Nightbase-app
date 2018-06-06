@@ -32,7 +32,7 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
 
     private GoogleMap mMap;
     private Event event;
-    private boolean like_toggle = false;
+    private boolean like_toggle;
     private static final String TAG = EventActivity.class.getSimpleName();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("events");
@@ -81,21 +81,30 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
         // Favorite button, toggle
         final ImageButton favorite_btn = (ImageButton) findViewById(R.id.favorite_event);
 
+        // For the like button img
+        like_toggle = DBHandler.checkIfExists(event);
+        if(like_toggle) {
+            favorite_btn.setImageResource(R.drawable.ic_favorite_true_48dp);
+        } else if(!like_toggle) {
+            favorite_btn.setImageResource(R.drawable.ic_favorite_false_48dp);
+        }
+
         favorite_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if(!like_toggle) {
                     like_toggle = true;
-                    System.out.println("IM TRUE NOW");
+//                    System.out.println("IM TRUE NOW");
+//                    DBHandler.checkIfExists(event);
                     favorite_btn.setImageResource(R.drawable.ic_favorite_true_48dp);
                     DBHandler.addEvent(event);
                 } else if(like_toggle) {
                     like_toggle = false;
-                    System.out.println("IM FALSE NOW");
+//                    System.out.println("IM FALSE NOW");
+//                    DBHandler.checkIfExists(event);
                     favorite_btn.setImageResource(R.drawable.ic_favorite_false_48dp);
-                    //swap image
-                    // remove event
+                    DBHandler.removeEvent(event);
                 }
 
             }

@@ -2,6 +2,7 @@ package nightbase.nightbase.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -33,13 +34,13 @@ public class MyDBHandler extends SQLiteOpenHelper {
         // don't accidentally leak an Activity's context.
         // See this article for more information: http://bit.ly/6LRzfx
         if (sInstance == null) {
-            sInstance = new MyDBHandler(context.getApplicationContext());
+            sInstance = new MyDBHandler(context);
         }
         return sInstance;
     }
 
     public MyDBHandler(Context context) {
-        super(context,DATABASE_NAME,null,DATABASE_VERSION);
+        super(context,DATABASE_NAME,null,DATABASE_VERSION);//
     }
 
     @Override
@@ -68,15 +69,17 @@ public class MyDBHandler extends SQLiteOpenHelper {
             ContentValues values = new ContentValues();
 
             values.put(EVENT_ID, event.getID());
-            values.put(EVENT_NAME, event.getID());
+            values.put(EVENT_NAME, event.getName());
             values.put(EVENT_DESC, event.getDescription());
             values.put(EVENT_DATE, event.getDate());
             values.put(EVENT_LAT, event.getLatitude());
             values.put(EVENT_LONG, event.getLongitude());
             values.put(EVENT_LINK, event.getLink());
 
+            this.checkIfExists(event);
             db.insertOrThrow(TABLE_NAME, null, values);
             db.setTransactionSuccessful();
+            this.checkIfExists(event);
 
             System.out.println("added the event to the DB!");
 
@@ -87,20 +90,33 @@ public class MyDBHandler extends SQLiteOpenHelper {
         }
     }
 
+    public boolean checkIfExists(Event event) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        Cursor cursor = null;
+        String sql = "SELECT " + EVENT_ID + " FROM " + TABLE_NAME + " WHERE " + EVENT_ID + "=" + event.getID();
+
+        cursor = db.rawQuery(sql, null);
+
+        System.out.println("amount of rows : " + cursor.getCount());
+
+        int amount = cursor.getCount();
+        cursor.close();
+
+        if(amount > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public void removeEvent(Event event) {
         SQLiteDatabase db = getWritableDatabase();
 
-        db.beginTransaction();
+        String sql = "DELETE FROM " + TABLE_NAME + " WHERE " + EVENT_ID + " = " + event.getID() + ";";
+        db.execSQL(sql);
+        db.close();
 
-        try {
-
-            db.delete(TABLE_NAME, EVENT_ID + "=" + event.getID(), null);
-
-        }catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            db.endTransaction();
-        }
     }
 
     @Override
