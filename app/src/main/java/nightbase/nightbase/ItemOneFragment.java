@@ -29,7 +29,7 @@ public class ItemOneFragment extends Fragment {
     private ArrayList<Event> EventList = new ArrayList<Event>();
     private RecyclerView recyclerView;
     private EventAdapter mAdapter;
-//    private MoviesAdapter mAdapter;
+
     private static final String TAG = EventActivity.class.getSimpleName();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("events");

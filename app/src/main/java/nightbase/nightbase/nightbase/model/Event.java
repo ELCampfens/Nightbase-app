@@ -14,6 +14,13 @@ public class Event implements Serializable {
 
     }
 
+    public Event(String name, String description,
+                 String date) {
+        this.name = name;
+        this.description = description;
+        this.date = date;
+    }
+
     // Constructor for the list on the home page.
     public Event(String name, String description,
                  String date, double latitude, double longitude,

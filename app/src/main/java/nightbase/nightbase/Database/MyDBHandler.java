@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 import nightbase.nightbase.nightbase.model.Event;
 
 public class MyDBHandler extends SQLiteOpenHelper {
@@ -115,9 +117,34 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
         String sql = "DELETE FROM " + TABLE_NAME + " WHERE " + EVENT_ID + " = " + event.getID() + ";";
         db.execSQL(sql);
-        db.close();
 
+        db.close();
     }
+
+    public ArrayList<Event> getAll() {
+        SQLiteDatabase db = getWritableDatabase();
+        ArrayList<Event> EventList = new ArrayList<Event>();
+
+        Cursor  cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + ";",null);
+
+        if (cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+
+                EventList.add(new Event(
+                        cursor.getString(cursor.getColumnIndex(EVENT_NAME)),
+                        cursor.getString(cursor.getColumnIndex(EVENT_DESC)),
+                        cursor.getString(cursor.getColumnIndex(EVENT_DATE)),
+                        cursor.getDouble(cursor.getColumnIndex(EVENT_LAT)),
+                        cursor.getDouble(cursor.getColumnIndex(EVENT_LONG)),
+                        cursor.getString(cursor.getColumnIndex(EVENT_LINK)),
+                        cursor.getInt(cursor.getColumnIndex(EVENT_ID))));
+
+                cursor.moveToNext();
+            }
+        }
+        return EventList;
+    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
