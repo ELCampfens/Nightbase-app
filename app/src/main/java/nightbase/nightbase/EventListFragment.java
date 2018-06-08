@@ -49,7 +49,7 @@ public class EventListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_item_one, container, false);
+        View view = inflater.inflate(R.layout.fragment_list_events, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
         emptyNotification = (TextView) view.findViewById(R.id.textView);

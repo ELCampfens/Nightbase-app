@@ -58,8 +58,6 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.frame_layout, EventListFragment.newInstance());
         transaction.commit();
 
-        //Used to select an item programmatically
-        //bottomNavigationView.getMenu().getItem(2).setChecked(true);
     }
 
     @Override

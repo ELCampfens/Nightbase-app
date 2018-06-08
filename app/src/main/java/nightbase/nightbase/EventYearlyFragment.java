@@ -44,7 +44,7 @@ public class EventYearlyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_item_two, container, false);
+        View view = inflater.inflate(R.layout.fragment_yearly_events, container, false);
 
         // Declare classes
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
