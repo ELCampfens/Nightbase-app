@@ -25,7 +25,7 @@ public class ItemTwoFragment extends Fragment {
 
     private ArrayList<Event> EventList = new ArrayList<Event>();
     private RecyclerView recyclerView;
-    private EventAdapter mAdapter;
+    private YearlyEventAdapter mAdapter;
 
     private static final String TAG = EventActivity.class.getSimpleName();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -49,7 +49,7 @@ public class ItemTwoFragment extends Fragment {
 
         // Declare classes
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        mAdapter = new EventAdapter(EventList);
+        mAdapter = new YearlyEventAdapter(EventList, getActivity());
 
         // Set some settings.
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
