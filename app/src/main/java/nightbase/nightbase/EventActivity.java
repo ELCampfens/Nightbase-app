@@ -1,5 +1,6 @@
 package nightbase.nightbase;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v4.app.FragmentActivity;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -33,6 +35,8 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     private Event event;
     private boolean like_toggle;
+
+    private Toast favoriteToast;
     private static final String TAG = EventActivity.class.getSimpleName();
     MyDBHandler DBHandler = MyDBHandler.getInstance(this);
 
@@ -47,6 +51,11 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
 
         // Get the entire event from the intent.
         this.event = (Event) getIntent().getSerializableExtra("event");
+
+        //Toast init.
+        favoriteToast = new Toast(this);
+        favoriteToast.setDuration(Toast.LENGTH_SHORT);
+
 
         //Title
         TextView titleField = (TextView) findViewById(R.id.eventTitle);
@@ -93,10 +102,12 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
                 if(!like_toggle) {
                     like_toggle = true;
                     favorite_btn.setImageResource(R.drawable.ic_favorite_true_48dp);
+                    favoriteToast.makeText(v.getContext(),"Added to favorites!", Toast.LENGTH_SHORT).show();
                     DBHandler.addEvent(event);
                 } else if(like_toggle) {
                     like_toggle = false;
                     favorite_btn.setImageResource(R.drawable.ic_favorite_false_48dp);
+                    favoriteToast.makeText(v.getContext(),"Removed from favorites!", Toast.LENGTH_SHORT).show();
                     DBHandler.removeEvent(event);
                 }
 
