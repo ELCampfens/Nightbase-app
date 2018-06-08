@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,8 @@ public class ItemThreeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_three, container, false);
+
+        TextView emptyNotification = (TextView) view.findViewById(R.id.textView);
 
         // Declare classes
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
@@ -65,6 +68,9 @@ public class ItemThreeFragment extends Fragment {
 
         // Call all data.
         prepareEventData();
+
+        if(this.EventList.size() == 0)
+            emptyNotification.setText("Geen events gevonden!");
 
         return view;
     }

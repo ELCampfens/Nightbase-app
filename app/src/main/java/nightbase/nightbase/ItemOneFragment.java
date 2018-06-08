@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,9 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import nightbase.nightbase.Database.MyDBHandler;
 import nightbase.nightbase.nightbase.model.Event;
-import nightbase.nightbase.nightbase.model.Ticket;
 
 
 public class ItemOneFragment extends Fragment {
@@ -51,6 +50,8 @@ public class ItemOneFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_item_one, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
+        TextView emptyNotification = (TextView) view.findViewById(R.id.textView);
+
         mAdapter = new EventAdapter(EventList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -73,6 +74,9 @@ public class ItemOneFragment extends Fragment {
         }));
 
         prepareEventData();
+
+        if(this.EventList.size() == 0)
+            emptyNotification.setText("Geen events gevonden!");
 
         return view;
     }
