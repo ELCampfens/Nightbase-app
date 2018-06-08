@@ -93,7 +93,7 @@ public class ItemOneFragment extends Fragment {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Event event = ds.getValue(Event.class);
 
-                    System.out.println(event.toString());
+//                    System.out.println(event.toString());
 
                     EventList.add(event);
                 }
