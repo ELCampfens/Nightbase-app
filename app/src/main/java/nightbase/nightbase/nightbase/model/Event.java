@@ -24,10 +24,11 @@ public class Event implements Serializable {
     // Constructor for the list on the home page.
     public Event(String name, String description,
                  String date, double latitude, double longitude,
-                 String link, int id) {
+                 String link, int id, String image) {
 
         this.id = id;
         this.link = link;
+        this.image = image;
         this.latitude = latitude;
         this.longitude = longitude;
         this.name = name;
@@ -47,6 +48,10 @@ public class Event implements Serializable {
 
     public String getName() {
         return this.name;
+    }
+
+    public String getImage() {
+        return this.image;
     }
 
     public String getDescription() {

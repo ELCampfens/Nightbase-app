@@ -52,7 +52,7 @@ public class YearlyEventAdapter extends RecyclerView.Adapter<YearlyEventAdapter.
         holder.title.setText(event.getName());
         holder.description.setText(event.getDescription());
         holder.date.setText(event.getDate());
-        Glide.with(this.context).load(event.getLink()).into(holder.image);
+        Glide.with(this.context).load(event.getImage()).into(holder.image);
     }
 
     public Event getEvent(int pos) {

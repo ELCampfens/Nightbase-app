@@ -22,6 +22,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     // Event info
     public static final String EVENT_ID = "event_id";
     public static final String EVENT_NAME = "name";
+    public static final String EVENT_IMAGE = "image";
     public static final String EVENT_DESC = "description";
     public static final String EVENT_LAT = "latitude";
     public static final String EVENT_LONG = "longitude";
@@ -56,6 +57,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 + EVENT_LONG + " REAL,"
                 + EVENT_DATE + " TEXT,"
                 + EVENT_LINK + " TEXT,"
+                + EVENT_IMAGE + " TEXT, "
                 + EVENT_CLICK_COUNTER + " INTEGER"
                 + ")";
 
@@ -77,6 +79,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
             values.put(EVENT_LAT, event.getLatitude());
             values.put(EVENT_LONG, event.getLongitude());
             values.put(EVENT_LINK, event.getLink());
+            values.put(EVENT_IMAGE, event.getImage());
 
             this.checkIfExists(event);
             db.insertOrThrow(TABLE_NAME, null, values);
@@ -135,7 +138,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
                         cursor.getDouble(cursor.getColumnIndex(EVENT_LAT)),
                         cursor.getDouble(cursor.getColumnIndex(EVENT_LONG)),
                         cursor.getString(cursor.getColumnIndex(EVENT_LINK)),
-                        cursor.getInt(cursor.getColumnIndex(EVENT_ID))));
+                        cursor.getInt(cursor.getColumnIndex(EVENT_ID)),
+                        cursor.getString(cursor.getColumnIndex(EVENT_IMAGE))));
 
                 cursor.moveToNext();
             }

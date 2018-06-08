@@ -78,7 +78,7 @@ public class ItemThreeFragment extends Fragment {
 
         //Gets all events, ugly way but works.
         for(Event e : DBHandler.getAll()) {
-            EventList.add(new Event(e.getName(), e.getDescription(), e.getDate(), e.getLatitude(), e.getLongitude(), e.getLink(), e.getID()));
+            EventList.add(new Event(e.getName(), e.getDescription(), e.getDate(), e.getLatitude(), e.getLongitude(), e.getLink(), e.getID(), e.getImage()));
         }
 
         if(DBHandler.getAll().size() == 0) {
