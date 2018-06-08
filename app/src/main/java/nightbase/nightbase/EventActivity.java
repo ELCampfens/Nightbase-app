@@ -34,9 +34,6 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
     private Event event;
     private boolean like_toggle;
     private static final String TAG = EventActivity.class.getSimpleName();
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("events");
-
     MyDBHandler DBHandler = MyDBHandler.getInstance(this);
 
 
@@ -95,14 +92,10 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
 
                 if(!like_toggle) {
                     like_toggle = true;
-//                    System.out.println("IM TRUE NOW");
-//                    DBHandler.checkIfExists(event);
                     favorite_btn.setImageResource(R.drawable.ic_favorite_true_48dp);
                     DBHandler.addEvent(event);
                 } else if(like_toggle) {
                     like_toggle = false;
-//                    System.out.println("IM FALSE NOW");
-//                    DBHandler.checkIfExists(event);
                     favorite_btn.setImageResource(R.drawable.ic_favorite_false_48dp);
                     DBHandler.removeEvent(event);
                 }
