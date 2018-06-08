@@ -29,6 +29,8 @@ public class ItemOneFragment extends Fragment {
     private RecyclerView recyclerView;
     private EventAdapter mAdapter;
 
+    private TextView emptyNotification;
+
     private static final String TAG = EventActivity.class.getSimpleName();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("events");
@@ -50,7 +52,7 @@ public class ItemOneFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_item_one, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
-        TextView emptyNotification = (TextView) view.findViewById(R.id.textView);
+        emptyNotification = (TextView) view.findViewById(R.id.textView);
 
         mAdapter = new EventAdapter(EventList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
@@ -75,9 +77,6 @@ public class ItemOneFragment extends Fragment {
 
         prepareEventData();
 
-        if(this.EventList.size() == 0)
-            emptyNotification.setText("Geen events gevonden!");
-
         return view;
     }
 
@@ -90,6 +89,7 @@ public class ItemOneFragment extends Fragment {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
 //                String value = dataSnapshot.getValue(ArrayList<String>.class);
+
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Event event = ds.getValue(Event.class);
 
@@ -97,6 +97,9 @@ public class ItemOneFragment extends Fragment {
 
                     EventList.add(event);
                 }
+
+                if(EventList.size() == 0)
+                    emptyNotification.setText("Geen events gevonden!");
 
                 mAdapter.notifyDataSetChanged();
             }

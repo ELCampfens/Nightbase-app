@@ -23,6 +23,8 @@ public class ItemThreeFragment extends Fragment {
     private EventAdapter mAdapter;
     private MyDBHandler DBHandler;
 
+    private TextView emptyNotification;
+
     public static ItemThreeFragment newInstance() {
         ItemThreeFragment fragment = new ItemThreeFragment();
         return fragment;
@@ -38,7 +40,7 @@ public class ItemThreeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_three, container, false);
 
-        TextView emptyNotification = (TextView) view.findViewById(R.id.textView);
+        emptyNotification = (TextView) view.findViewById(R.id.textView);
 
         // Declare classes
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
@@ -69,9 +71,6 @@ public class ItemThreeFragment extends Fragment {
         // Call all data.
         prepareEventData();
 
-        if(this.EventList.size() == 0)
-            emptyNotification.setText("Geen events gevonden!");
-
         return view;
     }
 
@@ -80,6 +79,10 @@ public class ItemThreeFragment extends Fragment {
         //Gets all events, ugly way but works.
         for(Event e : DBHandler.getAll()) {
             EventList.add(new Event(e.getName(), e.getDescription(), e.getDate(), e.getLatitude(), e.getLongitude(), e.getLink(), e.getID()));
+        }
+
+        if(DBHandler.getAll().size() == 0) {
+            emptyNotification.setText("Geen events gevonden!");
         }
 
         mAdapter.notifyDataSetChanged();
