@@ -3,7 +3,6 @@ package nightbase.nightbase;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,7 +20,7 @@ import java.util.ArrayList;
 
 import nightbase.nightbase.nightbase.model.Event;
 
-public class ItemTwoFragment extends Fragment {
+public class EventYearlyFragment extends Fragment {
 
     private ArrayList<Event> EventList = new ArrayList<Event>();
     private RecyclerView recyclerView;
@@ -31,8 +30,8 @@ public class ItemTwoFragment extends Fragment {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("yearly_events");
 
-    public static ItemTwoFragment newInstance() {
-        ItemTwoFragment fragment = new ItemTwoFragment();
+    public static EventYearlyFragment newInstance() {
+        EventYearlyFragment fragment = new EventYearlyFragment();
         return fragment;
     }
 

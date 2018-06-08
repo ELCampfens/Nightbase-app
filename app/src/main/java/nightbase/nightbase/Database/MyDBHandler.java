@@ -13,7 +13,7 @@ import nightbase.nightbase.nightbase.model.Event;
 public class MyDBHandler extends SQLiteOpenHelper {
 
     // DB Information
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "Events.db";
 
     // Table Name

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import nightbase.nightbase.Database.MyDBHandler;
 import nightbase.nightbase.nightbase.model.Event;
 
-public class ItemThreeFragment extends Fragment {
+public class EventFavoriteFragment extends Fragment {
 
     private ArrayList<Event> EventList = new ArrayList<Event>();
     private RecyclerView recyclerView;
@@ -25,8 +25,8 @@ public class ItemThreeFragment extends Fragment {
 
     private TextView emptyNotification;
 
-    public static ItemThreeFragment newInstance() {
-        ItemThreeFragment fragment = new ItemThreeFragment();
+    public static EventFavoriteFragment newInstance() {
+        EventFavoriteFragment fragment = new EventFavoriteFragment();
         return fragment;
     }
 

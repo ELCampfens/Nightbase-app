@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import nightbase.nightbase.nightbase.model.Event;
 
 
-public class ItemOneFragment extends Fragment {
+public class EventListFragment extends Fragment {
 
     private ArrayList<Event> EventList = new ArrayList<Event>();
     private RecyclerView recyclerView;
@@ -35,8 +35,8 @@ public class ItemOneFragment extends Fragment {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("events");
 
-    public static ItemOneFragment newInstance() {
-        ItemOneFragment fragment = new ItemOneFragment();
+    public static EventListFragment newInstance() {
+        EventListFragment fragment = new EventListFragment();
         return fragment;
     }
 
@@ -92,9 +92,6 @@ public class ItemOneFragment extends Fragment {
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Event event = ds.getValue(Event.class);
-
-                    System.out.println(event.toString());
-
                     EventList.add(event);
                 }
 

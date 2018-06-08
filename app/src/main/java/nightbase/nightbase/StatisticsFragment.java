@@ -1,13 +1,11 @@
 package nightbase.nightbase;
 
-import android.content.pm.LabeledIntent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
@@ -16,22 +14,18 @@ import android.view.ViewGroup;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.interfaces.datasets.IPieDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class ItemFourFragment extends Fragment {
+public class StatisticsFragment extends Fragment {
 
     private PieChart mChart;
 
-    public static ItemFourFragment newInstance() {
-        ItemFourFragment fragment = new ItemFourFragment();
+    public static StatisticsFragment newInstance() {
+        StatisticsFragment fragment = new StatisticsFragment();
         return fragment;
     }
 

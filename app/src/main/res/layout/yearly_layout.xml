@@ -39,10 +39,10 @@
                 android:layout_below="@id/eventTitle"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:maxLength="50"
+                android:maxLines="3"
+                android:ellipsize="end"
                 android:layout_toRightOf="@id/eventImageView"
-                android:text="event desc"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                android:text="event desc" />
 
             <TextView
                 android:id="@+id/eventDate"
