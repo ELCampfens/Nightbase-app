@@ -34,9 +34,6 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
     private Event event;
     private boolean like_toggle;
     private static final String TAG = EventActivity.class.getSimpleName();
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("events");
-
     MyDBHandler DBHandler = MyDBHandler.getInstance(this);
 
 

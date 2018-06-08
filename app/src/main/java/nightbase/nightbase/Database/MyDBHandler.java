@@ -27,6 +27,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public static final String EVENT_LONG = "longitude";
     public static final String EVENT_DATE = "date";
     public static final String EVENT_LINK = "link";
+    public static final String EVENT_CLICK_COUNTER = "click_counter";
 
     // Singleton
     private static MyDBHandler sInstance;
@@ -54,12 +55,11 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 + EVENT_LAT + " REAL,"
                 + EVENT_LONG + " REAL,"
                 + EVENT_DATE + " TEXT,"
-                + EVENT_LINK + " TEXT"
+                + EVENT_LINK + " TEXT,"
+                + EVENT_CLICK_COUNTER + " INTEGER"
                 + ")";
 
-        System.out.println("Before creating");
         db.execSQL(CREATE_EVENT_TABLE);
-        System.out.println("After creating");
     }
 
     public void addEvent(Event event) {
@@ -99,8 +99,6 @@ public class MyDBHandler extends SQLiteOpenHelper {
         String sql = "SELECT " + EVENT_ID + " FROM " + TABLE_NAME + " WHERE " + EVENT_ID + "=" + event.getID();
 
         cursor = db.rawQuery(sql, null);
-
-        System.out.println("amount of rows : " + cursor.getCount());
 
         int amount = cursor.getCount();
         cursor.close();
